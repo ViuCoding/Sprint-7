@@ -38,6 +38,8 @@ export default {
       prices: [],
       totalQuote: 0,
       costPerPage: 30,
+      numPages: 0,
+      numLangs: 0,
     };
   },
 
@@ -47,12 +49,15 @@ export default {
       this.prices.forEach((price) => {
         this.totalQuote += price;
       });
+      this.totalQuote += this.numPages * this.numLangs * this.costPerPage;
     },
 
     // This function gets called everytime pages or languages change, because in the Panel component we are watching the values and emitting everytime they change
-    addExtraFees(numPages = 1, numLanguages = 0) {
+    addExtraFees(pages = 1, langs = 0) {
+      this.numPages = pages;
+      this.numLangs = langs;
       this.calculateTotal();
-      this.totalQuote += numPages * numLanguages * this.costPerPage;
+      console.log(this.numPages, this.numLangs);
     },
   },
 };
