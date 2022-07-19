@@ -1,7 +1,7 @@
 <template>
   <form>
     <button type="button" @click="quantity--">-</button>
-    <input type="text" v-model="quantity" />
+    <input class="input" type="text" v-model="quantity" />
     <button type="button" @click="quantity++">+</button>
   </form>
 </template>
@@ -29,4 +29,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.input {
+  width: 3rem;
+  padding: 5px;
+  border: none;
+  background: #42b983;
+  color: white;
+  margin: 0 10px;
+}
+</style>

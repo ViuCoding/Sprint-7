@@ -32,10 +32,6 @@ export default {
 </script>
 
 <style scoped>
-form {
-  border: 1px solid #42b983;
-  border-radius: 10px;
-}
 form div {
   margin: 1rem 0;
 }
