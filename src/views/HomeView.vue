@@ -6,8 +6,7 @@
         <label for="web">A web page - 500€</label>
         <input type="checkbox" id="web" :value="500" v-model="prices" @change="calculateTotal" /> <br />
         <div v-if="prices.includes(500)">
-          <!-- We listen to the custom event "addFees" that gets called everytime the values of pages or languages change -->
-          <Panel @addFees="addExtraFees" :numPages="numPages" :numLangs="numLangs" />
+          <Panel @updatePages="updateNumPages" @updateLangs="updateNumLangs" />
         </div>
       </div>
 
@@ -58,14 +57,15 @@ export default {
         this.numLangs = 0;
       }
     },
-
-    // This function gets called everytime pages or languages change, because in the Panel component we are watching the values and emitting everytime they change
-    addExtraFees(pages = 1, langs = 0) {
-      this.numPages = pages;
-      this.numLangs = langs;
+    updateNumPages(val) {
+      this.numPages = val;
       this.calculateTotal();
-      console.log(this.numPages, this.numLangs);
     },
+    updateNumLangs(val) {
+      this.numLangs = val;
+      this.calculateTotal();
+    },
+
   },
 };
 </script>

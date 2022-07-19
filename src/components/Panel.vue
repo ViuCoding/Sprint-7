@@ -2,11 +2,11 @@
   <form>
     <div>
       <label for="pages">Number of pages </label>
-      <input type="number" id="pages" v-model="numPages" min="0" />
+      <CounterTool @updateQuantity="updatePages" />
     </div>
     <div>
       <label for="lang">How many languages </label>
-      <input type="number" id="lang" v-model="numLangs" min="0" />
+      <CounterTool @updateQuantity="updateLangs" />
     </div>
   </form>
 </template>
@@ -16,26 +16,18 @@ import CounterTool from "./CounterTool.vue";
 
 export default {
   name: "Panel",
-  props: ["numPages", "numLangs"],
 
   components: { CounterTool },
 
   methods: {
-    extraFees() {
-      this.$emit("addFees", this.numPages, this.numLangs);
+    updatePages(val) {
+      this.$emit("updatePages", val);
+    },
+    updateLangs(val) {
+      this.$emit("updateLangs", val);
     },
   },
 
-  watch: {
-    // Each time the value of "pages" changes we call the function that emits the values to the parent component
-    numPages() {
-      this.extraFees();
-    },
-    // Each time the value of "languages" changes we call the function that emits the values to the parent component
-    numLangs() {
-      this.extraFees();
-    },
-  },
 };
 </script>
 

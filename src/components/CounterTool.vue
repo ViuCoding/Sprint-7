@@ -1,15 +1,14 @@
 <template>
   <form>
-    <button type="button" @click="decrease">-</button>
-    <input type="text" :value="quantity" />
-    <button type="button" @click="increase">+</button>
+    <button type="button" @click="quantity--">-</button>
+    <input type="text" v-model="quantity" />
+    <button type="button" @click="quantity++">+</button>
   </form>
 </template>
 
 <script>
 export default {
   name: "CounterTool",
-  props: ["pages", "languages"],
   data() {
     return {
       quantity: 0,
@@ -17,8 +16,15 @@ export default {
   },
 
   methods: {
-    decrease() {},
-    increase() {},
+    emitQuantity() {
+      this.$emit("updateQuantity", this.quantity);
+    },
+  },
+
+  watch: {
+    quantity() {
+      this.emitQuantity();
+    },
   },
 };
 </script>
