@@ -4,7 +4,7 @@
       <h2>What would you like to do?</h2>
       <div>
         <label for="web">A web page - 500€</label>
-        <input type="checkbox" id="web" :value="500" v-model="prices" @change="calculateTotal" /> <br />
+        <input type="checkbox" id="web" :value="500" v-model="prices" :webPage="webPage" @change="calculateTotal" /> <br />
         <div v-if="prices.includes(500)">
           <Panel @updatePages="updateNumPages" @updateLangs="updateNumLangs" />
         </div>
@@ -65,7 +65,6 @@ export default {
       this.numLangs = val;
       this.calculateTotal();
     },
-
   },
 };
 </script>
