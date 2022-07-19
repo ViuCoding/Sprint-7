@@ -7,7 +7,7 @@
         <input type="checkbox" id="web" :value="500" v-model="prices" @change="calculateTotal" /> <br />
         <div v-if="prices.includes(500)">
           <!-- We listen to the custom event "addFees" that gets called everytime the values of pages or languages change -->
-          <Panel @addFees="addExtraFees" />
+          <Panel @addFees="addExtraFees" :numPages="numPages" :numLangs="numLangs" />
         </div>
       </div>
 
@@ -32,7 +32,9 @@ import Panel from "../components/Panel.vue";
 
 export default {
   name: "HomeView",
+
   components: { Panel },
+
   data() {
     return {
       prices: [],
@@ -49,7 +51,12 @@ export default {
       this.prices.forEach((price) => {
         this.totalQuote += price;
       });
-      this.totalQuote += this.numPages * this.numLangs * this.costPerPage;
+      if (this.prices.includes(500)) {
+        this.totalQuote += this.numPages * this.numLangs * this.costPerPage;
+      } else {
+        this.numPages = 0;
+        this.numLangs = 0;
+      }
     },
 
     // This function gets called everytime pages or languages change, because in the Panel component we are watching the values and emitting everytime they change
