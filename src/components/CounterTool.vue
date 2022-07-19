@@ -1,8 +1,8 @@
 <template>
   <form class="container">
-    <button class="btn" type="button" @click="decrease"><fa class="icons" icon="fa-solid fa-circle-minus" /></button>
+    <button class="btn" type="button" @click="decrease"><fa class="icon-red" icon="fa-solid fa-circle-minus" /></button>
     <input class="input" type="text" v-model="quantity" />
-    <button class="btn" type="button" @click="increase"><fa class="icons" icon="fa-solid fa-circle-plus" /></button>
+    <button class="btn" type="button" @click="increase"><fa class="icon-green" icon="fa-solid fa-circle-plus" /></button>
   </form>
 </template>
 
@@ -39,17 +39,23 @@ export default {
 
 <style>
 .container {
+  width: 20%;
+  margin: 10px auto;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  background: #2c3e50;
+  border-radius: 30px;
 }
 .input {
-  width: 3rem;
+  width: 2rem;
+  text-align: center;
   padding: 5px;
   border: none;
-  background: #42b983;
-  font-weight: bold;
+  background: transparent;
+  font-weight: 900;
+  font-size: 16px;
   border-radius: 4px;
   color: white;
   margin: 0 10px;
@@ -65,8 +71,12 @@ export default {
   transform: scale(0.94);
 }
 
-.icons {
+.icon-green {
   color: #42b983;
+  font-size: 1.8rem;
+}
+.icon-red {
+  color: crimson;
   font-size: 1.8rem;
 }
 </style>
