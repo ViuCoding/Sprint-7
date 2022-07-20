@@ -27,12 +27,13 @@ export default {
       this.$emit("updateLangs", val);
     },
   },
-
 };
 </script>
 
-<style scoped>
-form div {
-  margin: 1rem 0;
+<style>
+
+
+label {
+  margin-right: 1rem;
 }
 </style>

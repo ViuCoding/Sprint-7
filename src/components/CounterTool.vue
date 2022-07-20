@@ -1,5 +1,5 @@
 <template>
-  <form class="container">
+  <form class="form-container">
     <button class="btn" type="button" @click="decrease"><fa class="icon-red" icon="fa-solid fa-circle-minus" /></button>
     <input class="input" type="text" v-model="quantity" />
     <button class="btn" type="button" @click="increase"><fa class="icon-green" icon="fa-solid fa-circle-plus" /></button>
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style>
-.container {
+.form-container {
   width: 20%;
   margin: 10px auto;
   padding: 10px;
@@ -49,7 +49,7 @@ export default {
   border-radius: 30px;
 }
 .input {
-  width: 2rem;
+  width: 4rem;
   text-align: center;
   padding: 5px;
   border: none;

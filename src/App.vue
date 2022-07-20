@@ -21,7 +21,7 @@
       </p>
     </div>
   </div>
-  <div class="panel">
+  <div class="toggle-button">
     <a href="#" @click="togglePage">
       <span v-if="!showPage"> GET YOUR QUOTE </span>
       <span v-else> GO BACK TO THE WELCOME PAGE</span>
@@ -53,9 +53,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: 2rem 0;
 }
 
-.panel a {
+.toggle-button a {
   font-weight: bold;
   padding: 0.8rem;
   text-decoration: none;
@@ -76,6 +77,7 @@ export default {
   background: #42b983;
   color: white;
   width: 100%;
+  padding: 1rem;
 }
 
 .cta span {

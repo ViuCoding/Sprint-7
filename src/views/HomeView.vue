@@ -6,7 +6,7 @@
         <label for="web">Web Page <span class="prices">500€</span></label>
         <div class="center"><input type="checkbox" id="web" :value="500" v-model="prices" @change="calculateTotal" /> <br /></div>
       </div>
-      <div v-if="prices.includes(500)" class="panel">
+      <div v-show="prices.includes(500)" class="panel">
         <Panel @updatePages="updateNumPages" @updateLangs="updateNumLangs" />
       </div>
 
@@ -22,7 +22,7 @@
     </div>
   </form>
 
-  <h2 v-if="totalQuote">Total: {{ totalQuote }}€</h2>
+  <h2 v-if="totalQuote" class="total">Total: {{ totalQuote }}€</h2>
 </template>
 
 <script>
@@ -70,8 +70,9 @@ export default {
 </script>
 
 <style scoped>
-h2 {
+.total {
   color: #42b983;
+  margin: 2rem 0;
 }
 
 label {
@@ -79,7 +80,7 @@ label {
 }
 
 .input-box {
-  margin: 3rem 0;
+  margin: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
