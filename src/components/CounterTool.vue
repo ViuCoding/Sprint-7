@@ -79,4 +79,6 @@ export default {
   color: crimson;
   font-size: 1.8rem;
 }
+
+
 </style>
