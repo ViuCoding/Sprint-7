@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="handleSubmit">
     <div class="price-query">
       <h1>What would you like to do?</h1>
       <div class="input-box">
@@ -20,6 +20,15 @@
         <input type="checkbox" id="google" :value="200" v-model="prices" @change="calculateTotal" /> <br />
       </div>
     </div>
+
+    <div class="client-info input-box">
+      <label for="name">Your Name: </label>
+      <input type="text" id="name" v-model="userName" required />
+      <label for="project">Name your project: </label>
+      <input type="text" id="project" v-model="projectName" required />
+    </div>
+
+    <button class="btn btn-danger">Submit</button>
   </form>
 
   <h2 v-if="totalQuote" class="total">Total: {{ totalQuote }}€</h2>
@@ -41,6 +50,9 @@ export default {
       costPerPage: 30,
       numPages: 0,
       numLangs: 0,
+      quoteList: [],
+      userName: "",
+      projectName: "",
     };
   },
 
@@ -65,11 +77,19 @@ export default {
       this.numLangs = val;
       this.calculateTotal();
     },
+
+    handleSubmit() {
+      console.log("Form submitted");
+    },
   },
 };
 </script>
 
 <style scoped>
+form {
+  margin: 2rem 0;
+}
+
 .total {
   color: #42b983;
   margin: 2rem 0;
@@ -84,6 +104,20 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.client-info {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  border: none;
+  background: #42b983;
+  text-align: center;
+  padding: 5px;
+  color: white;
 }
 
 input[type="checkbox"] {
