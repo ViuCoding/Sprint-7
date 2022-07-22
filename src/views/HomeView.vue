@@ -32,16 +32,19 @@
   </form>
 
   <h2 v-if="totalQuote" class="total">Total: {{ totalQuote }}€</h2>
+
+  <DisplayQuotes :quoteList="quoteList" />
 </template>
 
 <script>
 // @ is an alias to /src
 import Panel from "../components/Panel.vue";
+import DisplayQuotes from "../components/DisplayQuotes.vue";
 
 export default {
   name: "HomeView",
 
-  components: { Panel },
+  components: { Panel, DisplayQuotes },
 
   data() {
     return {
@@ -80,6 +83,13 @@ export default {
 
     handleSubmit() {
       console.log("Form submitted");
+      this.quoteList.push({
+        name: this.userName,
+        project: this.projectName,
+        total: this.totalQuote,
+      });
+
+      console.log(this.quoteList);
     },
   },
 };
