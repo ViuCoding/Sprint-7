@@ -1,5 +1,6 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <!-- <form @submit.prevent="handleSubmit"> -->
+  <form>
     <div class="price-query">
       <h1>What would you like to do?</h1>
       <div class="input-box">
@@ -21,19 +22,19 @@
       </div>
     </div>
 
-    <div class="client-info input-box">
+    <!-- <div class="client-info input-box">
       <label for="name">Your Name: </label>
       <input type="text" id="name" v-model="userName" required />
       <label for="project">Name your project: </label>
       <input type="text" id="project" v-model="projectName" required />
-    </div>
+    </div> -->
 
-    <button class="btn btn-danger">Submit</button>
+    <!-- <button class="btn btn-danger">Submit</button> -->
   </form>
 
   <h2 v-if="totalQuote" class="total">Total: {{ totalQuote }}€</h2>
 
-  <DisplayQuotes :quoteList="quoteList" />
+  <!-- <DisplayQuotes :quoteList="quoteList" /> -->
 </template>
 
 <script>
@@ -81,16 +82,16 @@ export default {
       this.calculateTotal();
     },
 
-    handleSubmit() {
-      console.log("Form submitted");
-      this.quoteList.push({
-        name: this.userName,
-        project: this.projectName,
-        total: this.totalQuote,
-      });
+    // handleSubmit() {
+    //   console.log("Form submitted");
+    //   this.quoteList.push({
+    //     name: this.userName,
+    //     project: this.projectName,
+    //     total: this.totalQuote,
+    //   });
 
-      console.log(this.quoteList);
-    },
+    //   console.log(this.quoteList);
+    // },
   },
 };
 </script>
