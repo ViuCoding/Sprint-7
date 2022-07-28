@@ -33,6 +33,8 @@ export default {
     quantity() {
       if (this.quantity >= 1) {
         this.emitQuantity();
+      } else {
+        alert("You can only introduce positive numbers!!!");
       }
     },
   },
