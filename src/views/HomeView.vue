@@ -1,6 +1,6 @@
 <template>
-  <!-- <form @submit.prevent="handleSubmit"> -->
-  <form>
+  <form @submit.prevent="handleSubmit">
+    <!-- <form> -->
     <div class="price-query">
       <h1>What would you like to do?</h1>
       <div class="input-box">
@@ -22,19 +22,19 @@
       </div>
     </div>
 
-    <!-- <div class="client-info input-box">
-      <label for="name">Your Name: </label>
-      <input type="text" id="name" v-model="userName" required />
-      <label for="project">Name your project: </label>
+    <div class="client-info input-box">
+      <label class="client-label" for="client-name">Your Name: </label>
+      <input type="text" id="client-name" v-model="userName" required />
+      <label class="client-label" for="project">Name your project: </label>
       <input type="text" id="project" v-model="projectName" required />
-    </div> -->
+    </div>
 
-    <!-- <button class="btn btn-danger">Submit</button> -->
+    <button class="btn btn-danger">Submit</button>
   </form>
 
   <h2 v-if="totalQuote" class="total">Total: {{ totalQuote }}€</h2>
 
-  <!-- <DisplayQuotes :quoteList="quoteList" /> -->
+  <DisplayQuotes v-if="quoteList.length" :quoteList="quoteList" />
 </template>
 
 <script>
@@ -82,16 +82,19 @@ export default {
       this.calculateTotal();
     },
 
-    // handleSubmit() {
-    //   console.log("Form submitted");
-    //   this.quoteList.push({
-    //     name: this.userName,
-    //     project: this.projectName,
-    //     total: this.totalQuote,
-    //   });
+    handleSubmit() {
+      console.log("Form submitted");
+      this.quoteList.push({
+        name: this.userName,
+        project: this.projectName,
+        total: this.totalQuote,
+      });
 
-    //   console.log(this.quoteList);
-    // },
+      this.userName = "";
+      this.projectName = "";
+
+      console.log(this.quoteList);
+    },
   },
 };
 </script>
@@ -118,7 +121,6 @@ label {
 }
 
 .client-info {
-  display: flex;
   flex-direction: column;
 }
 
@@ -171,5 +173,9 @@ input:checked[type="checkbox"]:before {
   color: white;
   padding: 8px;
   border-radius: 30px;
+}
+
+.client-label {
+  font-size: 1rem;
 }
 </style>
