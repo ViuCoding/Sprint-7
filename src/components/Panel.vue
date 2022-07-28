@@ -38,6 +38,8 @@ import CounterTool from "./CounterTool.vue";
 export default {
   name: "Panel",
 
+  emits: ["updatePages", "updateLangs"],
+
   components: { CounterTool },
 
   methods: {

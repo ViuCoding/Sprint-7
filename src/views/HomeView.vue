@@ -52,8 +52,8 @@ export default {
       prices: [],
       totalQuote: 0,
       costPerPage: 30,
-      numPages: 0,
-      numLangs: 0,
+      numPages: 1,
+      numLangs: 1,
       quoteList: [],
       userName: "",
       projectName: "",
@@ -69,8 +69,8 @@ export default {
       if (this.prices.includes(500)) {
         this.totalQuote += this.numPages * this.numLangs * this.costPerPage;
       } else {
-        this.numPages = 0;
-        this.numLangs = 0;
+        this.numPages = 1;
+        this.numLangs = 1;
       }
     },
     updateNumPages(val) {

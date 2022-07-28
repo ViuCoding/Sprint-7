@@ -1,7 +1,7 @@
 <template>
   <form class="form-container">
     <button class="button" type="button" @click="decrease"><fa class="icon-red" icon="fa-solid fa-circle-minus" /></button>
-    <input class="input" type="text" v-model="quantity" />
+    <input class="input" type="number" v-model="quantity" />
     <button class="button" type="button" @click="increase"><fa class="icon-green" icon="fa-solid fa-circle-plus" /></button>
   </form>
 </template>
@@ -9,18 +9,19 @@
 <script>
 export default {
   name: "CounterTool",
+  emits: ["updateQuantity"],
   data() {
     return {
-      quantity: 0,
+      quantity: 1,
     };
   },
 
   methods: {
     decrease() {
-      this.quantity > 0 ? this.quantity-- : (this.quantity = 0);
+      this.quantity > 1 ? this.quantity-- : (this.quantity = 1);
     },
     increase() {
-      this.quantity < 0 ? (this.quantity = 0) : this.quantity++;
+      this.quantity < 1 ? (this.quantity = 1) : this.quantity++;
     },
     emitQuantity() {
       this.$emit("updateQuantity", this.quantity);
@@ -28,8 +29,9 @@ export default {
   },
 
   watch: {
+    //Prevents the Emit if the values are lower than 1 (which is the default value)
     quantity() {
-      if (this.quantity >= 0) {
+      if (this.quantity >= 1) {
         this.emitQuantity();
       }
     },
@@ -48,6 +50,13 @@ export default {
   background: #2c3e50;
   border-radius: 30px;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .input {
   width: 4rem;
   text-align: center;
@@ -79,6 +88,4 @@ export default {
   color: crimson;
   font-size: 1.8rem;
 }
-
-
 </style>
