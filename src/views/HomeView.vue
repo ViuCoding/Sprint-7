@@ -82,18 +82,22 @@ export default {
     },
 
     handleSubmit() {
-      if (this.userName !== "" && this.projectName !== "") {
+      let userNameTrimmed = this.userName.trim();
+      let projectNameTrimmed = this.projectName.trim();
+      console.log(userNameTrimmed);
+
+      if (userNameTrimmed.length !== 0 && projectNameTrimmed.length !== 0 && isNaN(userNameTrimmed) && isNaN(projectNameTrimmed)) {
         this.quoteList.push({
           name: this.userName,
           project: this.projectName,
           total: this.totalQuote,
         });
       } else {
-        alert("PROBLEMO");
+        alert("Name and Project must have a value.");
       }
 
-      // this.userName = "";
-      // this.projectName = "";
+      this.userName = "";
+      this.projectName = "";
     },
   },
 };
