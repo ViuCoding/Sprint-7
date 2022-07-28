@@ -1,8 +1,9 @@
 <template>
-  <div v-for="quote in quoteList" :key="quote">
-    <h5>{{ quote.name }}</h5>
-    <p>{{quote.project}}</p>
-    
+  <div v-for="(quote, id) in quoteList" :key="id">
+    <h5>Name: {{ quote.name }}</h5>
+    <p>Project Name: {{ quote.project }}</p>
+    <p>ID:{{ id }}</p>
+    <h6>Total: {{ quote.total }}</h6>
   </div>
 </template>
 
