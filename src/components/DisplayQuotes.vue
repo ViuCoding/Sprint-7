@@ -1,9 +1,13 @@
 <template>
-  <div v-for="(quote, id) in quoteList" :key="id" class="quote-card">
-    <p><b>Name:</b> {{ quote.name }}</p>
-    <p><b>Project Name:</b> {{ quote.project }}</p>
-    <p><b>Project ID:</b> {{ id }}</p>
-    <p class="total-price">Total: {{ quote.total }}€</p>
+  <div v-for="(quote, id) in quoteList" :key="id">
+    <div v-if="quote.total > 0">
+      <div class="quote-card">
+        <p><b>Name:</b> {{ quote.name }}</p>
+        <p><b>Project Name:</b> {{ quote.project }}</p>
+        <p><b>Project ID:</b> {{ id }}</p>
+        <p class="total-price">Total: {{ quote.total }}€</p>
+      </div>
+    </div>
   </div>
 </template>
 
