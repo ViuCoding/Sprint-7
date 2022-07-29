@@ -92,7 +92,7 @@ export default {
           total: this.totalQuote,
         });
       } else {
-        alert("Name and Project must have a value.");
+        alert("Name and Project must have a non-numerical value.");
       }
 
       this.userName = "";
